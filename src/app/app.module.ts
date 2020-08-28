@@ -10,12 +10,20 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatMenuModule} from '@angular/material/menu';
 import { WarehouseMapComponent } from './warehouse-map/warehouse-map.component';
 import { MenuComponent } from './menu/menu.component';
+import {ProductPageAddDialogComponent, ProductPageComponent} from './product-page/product-page.component';
+import {MatTableModule} from '@angular/material/table';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {MatDialogModule} from '@angular/material/dialog';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     WarehouseMapComponent,
-    MenuComponent
+    MenuComponent,
+    ProductPageComponent,
+    ProductPageAddDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -24,7 +32,12 @@ import { MenuComponent } from './menu/menu.component';
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
-    MatMenuModule
+    MatMenuModule,
+    MatTableModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatDialogModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

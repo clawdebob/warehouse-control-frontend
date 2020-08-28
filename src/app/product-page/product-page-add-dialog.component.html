@@ -1,0 +1,31 @@
+<h1 mat-dialog-title>Add new product</h1>
+<div mat-dialog-content [formGroup]="form">
+  <mat-form-field>
+    <mat-label>Serial</mat-label>
+    <input matInput [formControlName]="FORM.SERIAL">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Name</mat-label>
+    <input matInput [formControlName]="FORM.NAME">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Company</mat-label>
+    <input matInput [formControlName]="FORM.COMPANY">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Row</mat-label>
+    <input matInput [formControlName]="FORM.ROW">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Column</mat-label>
+    <input matInput [formControlName]="FORM.COLUMN">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Place</mat-label>
+    <input matInput [formControlName]="FORM.PLACE">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Submit</button>
+</div>
