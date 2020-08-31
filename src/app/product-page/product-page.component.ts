@@ -49,6 +49,9 @@ export class ProductPageComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
+      if (!result) {
+        return;
+      }
       this.productData.push(result);
       this.dataSource = new MatTableDataSource(this.productData);
     });
