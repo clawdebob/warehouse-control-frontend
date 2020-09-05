@@ -1,0 +1,7 @@
+<div class="data-card" *ngIf="content">
+  <h2 class="data-card--title">{{content.title}}</h2>
+  <div *ngFor="let item of content.items" class="data-card--item">
+    <div class="data-card--item--name">{{item.propName}}:</div>
+    <div class="data-card--item--value">{{item.value}}</div>
+  </div>
+</div>

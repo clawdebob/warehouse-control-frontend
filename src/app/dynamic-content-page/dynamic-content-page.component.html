@@ -1,0 +1,8 @@
+<div>
+  <h2>App data</h2>
+  <div class="card-container">
+    <div *ngFor="let card of appCards">
+      <app-card-wrapper [data]="card"></app-card-wrapper>
+    </div>
+  </div>
+</div>

@@ -16,6 +16,11 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatDialogModule} from '@angular/material/dialog';
 import { ReactiveFormsModule } from '@angular/forms';
+import {DynamicContentPageComponent} from './dynamic-content-page/dynamic-content-page.component';
+import {DataCardComponent} from './data-card/data-card.component';
+import {CardWrapperComponent} from './card-wrapper/card-wrapper.component';
+import {AdDirective} from './card-wrapper/ad.directive';
+import {DescriptionCardComponent} from './description-card/description-card.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +28,16 @@ import { ReactiveFormsModule } from '@angular/forms';
     WarehouseMapComponent,
     MenuComponent,
     ProductPageComponent,
-    ProductPageAddDialogComponent
+    ProductPageAddDialogComponent,
+    DynamicContentPageComponent,
+    DataCardComponent,
+    CardWrapperComponent,
+    AdDirective,
+    DescriptionCardComponent
+  ],
+  entryComponents: [
+    DataCardComponent,
+    DescriptionCardComponent
   ],
   imports: [
     BrowserModule,

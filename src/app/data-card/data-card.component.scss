@@ -1,0 +1,19 @@
+.data-card {
+  border: 2px solid;
+  border-radius: 16px;
+  margin: 10px;
+
+  &--item {
+    display: flex;
+    margin: 0 20px 15px;
+
+    &--name {
+      margin-right: 8px;
+    }
+  }
+
+  &--title {
+    margin: 15px;
+    text-align: center;
+  }
+}
