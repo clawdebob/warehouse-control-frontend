@@ -27,7 +27,6 @@ export interface Product {
   styleUrls: ['./product-page.component.scss']
 })
 export class ProductPageComponent implements OnInit {
-  public displayedColumns: string[] = ['serial', 'name', 'company', 'place', 'row', 'column'];
   private productData = [
     {serial: 'cc80cf03', name: 'Apple Smart TV', company: 'Apple', place: 1, row: 1, column: 1},
     {serial: 'cc80cf06', name: 'Oculus Rift VR Headset', company: 'Facebook', place: 2, row: 1, column: 1},
@@ -37,11 +36,14 @@ export class ProductPageComponent implements OnInit {
     {serial: 'cc55cfaa', name: 'Honor 20', company: 'Huawei', place: 6, row: 1, column: 1},
   ];
   public dataSource = new MatTableDataSource(this.productData);
-
-  public applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-  }
+  public titleSource = [
+    {columnDef: 'serial', title: 'Serial'},
+    {columnDef: 'name', title: 'Name'},
+    {columnDef: 'company', title: 'Company'},
+    {columnDef: 'place', title: 'Place'},
+    {columnDef: 'row', title: 'Row'},
+    {columnDef: 'column', title: 'Column'}
+  ];
 
   openAddDialog(): void {
     const dialogRef = this.dialog.open(ProductPageAddDialogComponent , {
