@@ -1,0 +1,11 @@
+<div class="product__control-buttons">
+  <button mat-raised-button color="primary" (click)="openAddDialog()" [disabled]="!dataSource">Add</button>
+  <button mat-raised-button [disabled]="!dataSource">Delete</button>
+</div>
+
+<app-table
+  *ngIf="dataSource"
+  [titleSource]="titleSource"
+  [dataSource]="dataSource"
+>
+</app-table>

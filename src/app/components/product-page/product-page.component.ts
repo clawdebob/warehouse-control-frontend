@@ -1,7 +1,9 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
-import {FormBuilder, FormGroup, Validator} from '@angular/forms';
+import {FormBuilder, FormGroup} from '@angular/forms';
+import {Product} from '../../types/product.const';
+import {WarehouseControlService} from '../../services/warehouse-control.service';
 
 const FORM = {
   SERIAL: 'SERIAL',
@@ -12,30 +14,14 @@ const FORM = {
   PLACE: 'PLACE'
 };
 
-export interface Product {
-  serial: string;
-  name: string;
-  company: string;
-  place: number;
-  row: number;
-  column: number;
-}
-
 @Component({
   selector: 'app-product-page',
   templateUrl: './product-page.component.html',
   styleUrls: ['./product-page.component.scss']
 })
 export class ProductPageComponent implements OnInit {
-  private productData = [
-    {serial: 'cc80cf03', name: 'Apple Smart TV', company: 'Apple', place: 1, row: 1, column: 1},
-    {serial: 'cc80cf06', name: 'Oculus Rift VR Headset', company: 'Facebook', place: 2, row: 1, column: 1},
-    {serial: 'cc12cf06', name: 'Sony Playstation 4', company: 'Sony', place: 3, row: 1, column: 1},
-    {serial: 'cc1200fa', name: 'Nintendo Switch', company: 'Nintendo', place: 4, row: 1, column: 1},
-    {serial: 'cc11cfaa', name: 'Xbox One', company: 'Microsoft', place: 5, row: 1, column: 1},
-    {serial: 'cc55cfaa', name: 'Honor 20', company: 'Huawei', place: 6, row: 1, column: 1},
-  ];
-  public dataSource = new MatTableDataSource(this.productData);
+  private productData = null;
+  public dataSource = null;
   public titleSource = [
     {columnDef: 'serial', title: 'Serial'},
     {columnDef: 'name', title: 'Name'},
@@ -44,6 +30,11 @@ export class ProductPageComponent implements OnInit {
     {columnDef: 'row', title: 'Row'},
     {columnDef: 'column', title: 'Column'}
   ];
+
+  constructor(
+    public dialog: MatDialog,
+    private warehouse: WarehouseControlService
+  ) {}
 
   openAddDialog(): void {
     const dialogRef = this.dialog.open(ProductPageAddDialogComponent , {
@@ -59,9 +50,11 @@ export class ProductPageComponent implements OnInit {
     });
   }
 
-  constructor(public dialog: MatDialog) {}
-
   ngOnInit(): void {
+    this.warehouse.getProducts().subscribe((products) => {
+      this.productData = products;
+      this.dataSource = new MatTableDataSource(this.productData);
+    });
   }
 
 }
